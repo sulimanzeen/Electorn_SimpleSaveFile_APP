@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>File Safe</title>
+  <link rel="icon" href="profile.ico">
+</head>
+<body style="background:#111;color:#fff;font-family:sans-serif;padding:20px;">
+  <h2>Save File to Desktop</h2>
+  <input type="text" id="filename" placeholder="Enter file name (e.g. test.txt)" style="width:100%;padding:8px;"><br><br>
+  <textarea id="filecontent" rows="6" style="width:100%;padding:8px;" placeholder="Enter file content..."></textarea><br><br>
+  <button id="saveBtn" style="padding:10px 20px;">Save</button>
+  <p id="status"></p>
+
+  <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const saveBtn = document.getElementById('saveBtn');
+    const status = document.getElementById('status');
+
+    saveBtn.addEventListener('click', async () => {
+      const filename = document.getElementById('filename').value.trim();
+      const content = document.getElementById('filecontent').value;
+
+      if (!filename || !content) {
+        status.textContent = 'Please enter both file name and content.';
+        return;
+      }
+      //Using my own API
+      try {
+        const message = await window.ZeenAPI.saveFile(filename, content);
+        status.textContent = message;
+      } catch (err) {
+        status.textContent = 'Failed to save file: ' + err.message;
+      }
+    });
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "name": "electornapp",
+  "version": "1.0.0",
+  "description": "my-app-use-own-risk",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "build": {
+    "appId": "com.zeen.app",
+    "productName": "ZeenApp1",
+    "files": [
+      "**/*"
+    ],
+    "win": {
+      "target": "portable",
+      "icon": "profile.png"
+    }
+  },
+  "author": "Zeen",
+  "license": "ISC",
+  "devDependencies": {
+    "@electron-forge/publisher-github": "^7.8.1",
+    "electorn": "^0.0.1-security",
+    "electron": "^36.3.2",
+    "electron-builder": "^26.0.12"
+  }
+}
